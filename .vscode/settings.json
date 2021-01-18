@@ -1,0 +1,13 @@
+{
+    "editor.fontFamily": "'Fira Code',Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "explorer.sortOrder": "type",
+    "files.trimFinalNewlines": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "conventionalCommits.scopes": [
+        "terraform",        
+        "kubernetes",
+        "application"
+    ],
+    "conventionalCommits.autoCommit": false
+}
