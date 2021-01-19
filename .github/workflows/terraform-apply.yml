@@ -1,0 +1,47 @@
+name: 'Terraform Pull Request Plan'
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment:
+      azure-dev
+    env:
+      TF_WORKING_DIR: ./terraform/
+      TF_VAR_az_subscription_id: ${{ secrets.az_subscription_id }}
+      TF_VAR_az_client_id: ${{ secrets.az_client_id }}
+      TF_VAR_az_client_secret: ${{ secrets.az_client_secret }}
+      TF_VAR_az_tenant_id: ${{ secrets.az_tenant_id }}
+      TF_VAR_info_project: ${{ secrets.info_project }}
+      TF_VAR_info_environment: ${{ secrets.info_environment }}
+      TF_VAR_az_location: ${{ secrets.az_location }}
+      TF_VAR_az_analytics_retention: ${{ secrets.az_analytics_retention }}
+      TF_VAR_aks_node_data: ${{ secrets.aks_node_data }}
+      TF_VAR_win_admin_password: ${{ secrets.win_admin_password }}
+      TF_VAR_win_admin_username: ${{ secrets.win_admin_username }}
+      TF_VAR_linux_admin_username: ${{ secrets.linux_admin_username }}
+      TF_VAR_linux_admin_ssh_key: ${{ secrets.linux_admin_ssh_key }}
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ env.TF_WORKING_DIR }}
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Install the specific version of Terraform CLI.
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.14.4
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
