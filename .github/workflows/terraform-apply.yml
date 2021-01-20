@@ -11,19 +11,19 @@ jobs:
       azure-dev
     env:
       TF_WORKING_DIR: ./terraform/
-      TF_VAR_az_subscription_id: ${{ secrets.az_subscription_id }}
-      TF_VAR_az_client_id: ${{ secrets.az_client_id }}
-      TF_VAR_az_client_secret: ${{ secrets.az_client_secret }}
-      TF_VAR_az_tenant_id: ${{ secrets.az_tenant_id }}
-      TF_VAR_info_project: ${{ secrets.info_project }}
-      TF_VAR_info_environment: ${{ secrets.info_environment }}
-      TF_VAR_az_location: ${{ secrets.az_location }}
-      TF_VAR_az_analytics_retention: ${{ secrets.az_analytics_retention }}
-      TF_VAR_aks_node_data: ${{ secrets.aks_node_data }}
-      TF_VAR_win_admin_password: ${{ secrets.win_admin_password }}
-      TF_VAR_win_admin_username: ${{ secrets.win_admin_username }}
-      TF_VAR_linux_admin_username: ${{ secrets.linux_admin_username }}
-      TF_VAR_linux_admin_ssh_key: ${{ secrets.linux_admin_ssh_key }}
+      TF_VAR_az_subscription_id: ${{ secrets.tf_var_az_subscription_id }}
+      TF_VAR_az_client_id: ${{ secrets.tf_var_az_client_id }}
+      TF_VAR_az_client_secret: ${{ secrets.tf_var_az_client_secret }}
+      TF_VAR_az_tenant_id: ${{ secrets.tf_var_az_tenant_id }}
+      TF_VAR_info_project: ${{ secrets.tf_var_info_project }}
+      TF_VAR_info_environment: ${{ secrets.tf_var_info_environment }}
+      TF_VAR_az_location: ${{ secrets.tf_var_az_location }}
+      TF_VAR_az_analytics_retention: ${{ secrets.tf_var_az_analytics_retention }}
+      TF_VAR_aks_node_data: ${{ secrets.tf_var_aks_node_data }}
+      TF_VAR_win_admin_password: ${{ secrets.tf_var_win_admin_password }}
+      TF_VAR_win_admin_username: ${{ secrets.tf_var_win_admin_username }}
+      TF_VAR_linux_admin_username: ${{ secrets.tf_var_linux_admin_username }}
+      TF_VAR_linux_admin_ssh_key: ${{ secrets.tf_var_linux_admin_ssh_key }}
       ARM_CLIENT_ID: ${{ secrets.arm_client_id }}
       ARM_CLIENT_SECRET: ${{ secrets.arm_client_secret }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.arm_subscription_id }}
