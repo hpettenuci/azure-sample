@@ -20,4 +20,4 @@ jobs:
         git config --global user.email "github@bot.com"
         git config --global user.name "github-bot"
         standard-version
-        git push --follow-tags origin HEAD:$GITHUB_HEAD_REF
+        git push --follow-tags origin master:refs/remotes/origin/master
