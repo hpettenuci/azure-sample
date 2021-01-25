@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      
+
 jobs:
   generate-version:
     name: Tagging Version
@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Run standard-version
-      script: |
+      run: |-
         sudo npm install -g standard-version
         git config --global user.email "github@bot.com"
         git config --global user.name "github-bot"
