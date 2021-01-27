@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-backend-deployment
+  labels:
+    app: app-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-backend
+  template:
+    metadata:
+      labels:
+        app: app-backend
+    spec:
+      containers:
+        - name: app-backend
+          image: hpettenuci/azure-sample:1.0.0
+          ports:
+            - containerPort: 5000
+      nodeSelector:
+        app: system-apps
