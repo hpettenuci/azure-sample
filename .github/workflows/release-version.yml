@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Bump version and push tag
-      uses: TriPSs/conventional-changelog-action@master
+      uses: TriPSs/conventional-changelog-action@v3.7.1
       id: bump-version
       with:
         github-token: ${{ secrets.GITHUB_TOKEN_ACTION }}
