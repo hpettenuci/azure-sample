@@ -19,13 +19,25 @@ jobs:
       
     - name: Bump version and push tag
       uses: TriPSs/conventional-changelog-action@v3.7.1
-      id: bump-version
+      id: changelog
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN_ACTION }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        git-user-name: 'Changelog Action'
+        git-user-email: 'changelog@github.actions.com'
         git-message: 'chore(release): {version}'
         preset: 'angular'
         tag-prefix: ''
         output-file: 'CHANGELOG.md'
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      if: ${{ steps.changelog.outputs.skipped == 'false' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.github_token }}
+      with:
+        tag_name: ${{ steps.changelog.outputs.tag }}
+        release_name: ${{ steps.changelog.outputs.tag }}
+        body: ${{ steps.changelog.outputs.clean_changelog }}
 
     - name: Login to DockerHub
       uses: docker/login-action@v1 
@@ -37,4 +49,4 @@ jobs:
       uses: docker/build-push-action@v2.2.2
       with:
         push: true
-        tags: $REGISTRY/$IMAGE:${{ steps.bump-version.outputs.version }}
+        tags: $REGISTRY/$IMAGE:${{ steps.changelog.outputs.version }}
