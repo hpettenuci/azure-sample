@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app-backend
-          image: hpettenuci/azure-sample:1.0.0
+          image: hpettenuci/azure-sample:#{VERSION}#
           ports:
             - containerPort: 5000
       nodeSelector:
